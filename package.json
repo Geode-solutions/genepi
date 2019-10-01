@@ -1,0 +1,39 @@
+{
+    "name": "@geode/genepi",
+    "license": "MIT",
+    "version": "0.0.0-semantically-released",
+    "description": "Automatic generation of N-API wrapper from a C++ library",
+    "author": "Geode-solutions",
+    "keywords": [
+        "n-api",
+        "napi",
+        "wrapper",
+        "c++",
+        "addon",
+        "module",
+        "bindings",
+        "cmake"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Geode-solutions/genepi.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Geode-solutions/genepi/issues"
+    },
+    "homepage": "https://github.com/Geode-solutions/genepi#readme",
+    "scripts": {
+        "build": "cmake-js compile",
+        "build:debug": "cmake-js compile -D",
+        "install": "cmake-js compile",
+        "examples": "node ./examples/index.js"
+    },
+    "files": ["/cmake", "/include", "/src", "/CMakeLists.txt"],
+    "dependencies": {
+        "cmake-js": "^6.0.0",
+        "node-addon-api": "^1.7.1"
+    },
+    "devDependencies": {
+        "bindings": "^1.5.0"
+    }
+}

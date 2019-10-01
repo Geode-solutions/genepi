@@ -1,0 +1,69 @@
+/*
+ * Copyright (c) 2019 Geode-solutions
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ */
+
+#pragma once
+
+#include <genepi/common.h>
+
+namespace genepi
+{
+    class BaseSignature;
+} // namespace genepi
+
+namespace genepi
+{
+    // Storage format for method definitions.
+    class MethodDefinition
+    {
+    public:
+        MethodDefinition(
+            std::string name, unsigned int number, BaseSignature* signature )
+            : name_( std::move( name ) ),
+              number_( number ),
+              signature_( signature )
+        {
+        }
+
+        const std::string& name() const
+        {
+            return name_;
+        }
+
+        unsigned int number() const
+        {
+            return number_;
+        }
+
+        const BaseSignature* signature() const
+        {
+            return signature_;
+        }
+
+    private:
+        const std::string name_;
+        // Index to distinguish between functions with identical signatures.
+        const unsigned int number_;
+        // Signature represents return and argument types.
+        const BaseSignature* signature_;
+    };
+} // namespace genepi

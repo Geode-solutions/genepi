@@ -1,0 +1,37 @@
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: Geode-solutions/ci_tools
+      endpoint: Geode-solutions
+
+variables:
+- group: Tokens
+
+jobs:
+- template: clang-format.yml@templates
+
+- job: Test 
+  dependsOn: Format
+  strategy:
+    matrix:
+      Ubuntu:
+        imageName: 'ubuntu-16.04'
+      Mac:
+        imageName: 'macos-10.13'
+      Windows:
+        imageName: 'vs2017-win2016'
+  pool:
+    vmImage: $(imageName)
+  steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: "10.x"
+    - script: |
+        npm install
+        npm run examples
+      displayName: Compilation
+   
+- template: semantic-release.yml@templates
+  parameters:
+    dependencies: Test
