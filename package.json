@@ -29,6 +29,9 @@
         "examples": "node ./examples/index.js"
     },
     "files": ["/cmake", "/include", "/src", "/CMakeLists.txt"],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "cmake-js": "^6.0.0",
         "node-addon-api": "^1.7.1"
