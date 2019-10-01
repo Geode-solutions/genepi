@@ -28,7 +28,12 @@
         "install": "cmake-js compile",
         "examples": "node ./examples/index.js"
     },
-    "files": ["/cmake", "/include", "/src", "/CMakeLists.txt"],
+    "files": [
+        "/cmake",
+        "/include",
+        "/src",
+        "/CMakeLists.txt"
+    ],
     "publishConfig": {
         "access": "public"
     },
