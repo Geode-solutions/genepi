@@ -30,8 +30,8 @@ execute_process(
 string(REPLACE "\n" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 
-macro(add_genepi_library target_name files)
-    add_library(${target_name} SHARED ${files} ${CMAKE_JS_SRC})
+macro(add_genepi_library target_name)
+    add_library(${target_name} SHARED ${ARGN} ${CMAKE_JS_SRC})
     target_include_directories(${target_name}
         PUBLIC
             ${PROJECT_SOURCE_DIR}/include
