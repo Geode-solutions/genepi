@@ -33,7 +33,7 @@
 
 - Use your C++ API from JavaScript without any extra effort.
   - From **Node.js** and **Electron**,
-  - On Linux, OS X and Windows,
+  - On Linux, macOS and Windows,
   - Without changes to your C++ code. Simply add a separate short description at the end.
 - Distribute **native** code binary.
 
