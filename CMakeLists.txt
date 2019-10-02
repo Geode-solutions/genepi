@@ -63,10 +63,11 @@ target_include_directories(genepi
     PUBLIC
         ${PROJECT_SOURCE_DIR}/include
         ${PROJECT_BINARY_DIR}
-        ${PROJECT_SOURCE_DIR}/node_modules/node-addon-api
-        ${PROJECT_SOURCE_DIR}/../node-addon-api
+    PRIVATE
+        ${NODE_ADDON_API_DIR}
         ${CMAKE_JS_INC}
 )
+
 target_link_libraries(genepi PUBLIC ${CMAKE_JS_LIB})
 export(TARGETS genepi NAMESPACE genepi:: FILE genepi_target.cmake)
 include(GenerateExportHeader)

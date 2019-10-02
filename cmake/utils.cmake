@@ -22,12 +22,32 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+execute_process(
+    COMMAND node -p "require('node-addon-api').include"
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE NODE_ADDON_API_DIR
+)
+string(REPLACE "\n" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+
 macro(add_genepi_library target_name files)
     add_library(${target_name} SHARED ${files} ${CMAKE_JS_SRC})
+    target_include_directories(${target_name}
+        PUBLIC
+            ${PROJECT_SOURCE_DIR}/include
+            ${PROJECT_BINARY_DIR}
+        PRIVATE
+            ${NODE_ADDON_API_DIR}
+            ${CMAKE_JS_INC}
+    )
     set_target_properties(${target_name}
         PROPERTIES
             PREFIX "" 
             SUFFIX ".node"
     )
-    target_link_libraries(${target_name} genepi::genepi ${CMAKE_JS_LIB})
+    target_link_libraries(${target_name} 
+        PUBLIC
+            genepi::genepi 
+            ${CMAKE_JS_LIB}
+    )
 endmacro()
