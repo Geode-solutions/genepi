@@ -64,6 +64,7 @@ target_include_directories(genepi
         ${PROJECT_SOURCE_DIR}/include
         ${PROJECT_BINARY_DIR}
         ${PROJECT_SOURCE_DIR}/node_modules/node-addon-api
+        ${PROJECT_SOURCE_DIR}/../node-addon-api
         ${CMAKE_JS_INC}
 )
 target_link_libraries(genepi PUBLIC ${CMAKE_JS_LIB})
