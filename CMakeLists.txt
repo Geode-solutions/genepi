@@ -80,4 +80,6 @@ configure_package_config_file(
     INSTALL_DESTINATION .
 )
 
-add_subdirectory(examples)
+if(EXISTS examples)
+    add_subdirectory(examples)
+endif()
