@@ -28,15 +28,6 @@
 
 `genepi` is **MIT licensed** and based on templates and macros inspired by [nbind](https://github.com/charto/nbind) but using N-API.
 
-## Quick start
-
-## Requirements
-You need [Node.js](https://nodejs.org/) (at least v10.x) and one of the following C++ compilers:
-
-- GCC 4.8 or above,
-- Clang 3.6 or above,
-- Visual Studio 2015 ([the Community version](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx) is fine).
-
 ## Features
 `genepi` allows you to:
 
@@ -56,6 +47,78 @@ In more detail:
 - Call C++ methods from JavaScript with type checking.
 - Pass instances of compatible classes by value between languages (through the C++ stack).
 
+## Requirements
+You need [Node.js](https://nodejs.org/) (at least v10.x) and one of the following C++ compilers:
+
+- GCC 4.8 or above,
+- Clang 3.6 or above,
+- Visual Studio 2015 ([the Community version](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx) is fine).
+
+## Quick start
+1. Use your already existing C++ code in JavaScript
+
+```C++
+// My C++ code in hello.cpp
+#include <iostream>
+#include <string>
+ 
+struct Greeter {
+    static void sayHello( const std::string& name ) 
+    {
+        std::cout << "Hello, " << name << std::endl;
+    }
+};
+```
+
+2. Install genepi and add some scripts to the `package.json`
+```Shell
+npm install @geode/genepi
+```
+
+```JSON
+{
+  "scripts": {
+    "build": "cmake-js compile",
+    "build:debug": "cmake-js compile -D"
+  }
+}
+```
+
+3. Add JavaScript binding
+
+```C++
+// Add this to the file (or in another file)
+#include <genepi/genepi.h>
+ 
+GENEPI_CLASS( Greeter )
+{
+    GENEPI_METHOD( sayHello );
+}
+GENEPI_MODULE( hello )
+```
+
+4. Configure your project by creating a `CMakeLists.txt`
+```CMake
+cmake_minimum_required(VERSION 3.5)
+
+project(my_project)
+
+find_package(genepi REQUIRED PATHS ${PROJECT_SOURCE_DIR}/node_modules/@geode/genepi/build)
+
+add_genepi_library(my_project "hello.cpp")
+```
+
+5. Compile your addon
+```Shell
+npm run build
+```
+
+6. Use it!
+```JavaScript
+var myProject = require('my_project.node');
+myProject.Greeter.sayHello('you');
+```
+
 ## User guide
 - [Creating your project](#creating-your-project)
 - [Calling from Node.js](#calling-from-nodejs)
@@ -71,8 +134,7 @@ In more detail:
 
 ### Creating your project
 Create your repository using the provided Github template: [genepi-template](https://github.com/Geode-solutions/genepi-template).
-
-================================TODO============================
+Here is how to use a Github template: [link](https://help.github.com/en/articles/creating-a-repository-from-a-template).
 
 ### Calling from Node.js
 Each `genepi` module (i.e. each Node.js addon generated) needs to be registered using the `GENEPI_MODULE` macro:
@@ -80,8 +142,11 @@ Each `genepi` module (i.e. each Node.js addon generated) needs to be registered 
 ```C++
 // My C++ library
 
-GENEPI_MODULE( my-genepi-addon );
+GENEPI_MODULE( my_addon );
 ```
+
+This name `my_addon` is only used by [N-API](https://nodejs.org/api/n-api.html#n_api_module_registration).
+The name of the addon is set in the `CMakeLists.txt` using the `add_genepi_library` macro. See [Quick start](#quick-start).
 
 ```JavaScript
 // My JavaScript file
