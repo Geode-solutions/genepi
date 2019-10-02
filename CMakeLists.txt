@@ -80,6 +80,6 @@ configure_package_config_file(
     INSTALL_DESTINATION .
 )
 
-if(EXISTS examples)
+if(EXISTS ${PROJECT_SOURCE_DIR}/examples)
     add_subdirectory(examples)
 endif()
