@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-18.04
     
     steps:
-    - uses: Geode-solutions/actions/clang-format@master
+      - uses: actions/checkout@master
+      - uses: Geode-solutions/actions/clang-format@master
       
   build:
     runs-on: ${{ matrix.os }}
