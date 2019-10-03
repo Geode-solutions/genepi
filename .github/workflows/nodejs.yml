@@ -5,9 +5,15 @@ on:
   pull_request:
 
 jobs:
+  format:
+    runs-on: ubuntu-18.04
+    
+    steps:
+    - uses: Geode-solutions/actions/clang-format@master
+      
   build:
-
     runs-on: ${{ matrix.os }}
+    needs: format
 
     strategy:
       matrix:
