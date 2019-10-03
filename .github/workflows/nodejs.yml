@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: Geode-solutions/actions/clang-format@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
   build:
     runs-on: ${{ matrix.os }}
