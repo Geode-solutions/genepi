@@ -46,6 +46,6 @@ namespace
     GENEPI_MULTIFUNCTION( test, void, test_string, const std::string& );
     GENEPI_MULTIFUNCTION( test, void, test_int, int );
     GENEPI_MULTIFUNCTION( test, void, test_int2, int, int );
-}
+} // namespace
 
 GENEPI_MODULE( overloaded_functions );

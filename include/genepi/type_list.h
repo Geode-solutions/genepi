@@ -76,7 +76,8 @@ namespace genepi
     };
 
     template < template < typename... > class Output,
-        template < size_t, typename > class Mapper,
+        template < size_t, typename >
+        class Mapper,
         typename... Args >
     struct MapWithIndex
     {
