@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: Geode-solutions/actions/clang-format@master
         env:
-          GH_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       
   build:
     runs-on: ${{ matrix.os }}
@@ -33,3 +33,14 @@ jobs:
       run: |
         npm install
         npm run examples
+        
+  semantic-release:
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+    - uses: actions/checkout@v1
+    - uses: codfish/semantic-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    
