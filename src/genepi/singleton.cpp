@@ -32,8 +32,7 @@ namespace genepi
     public:
         void set_instance( const std::type_info &type, Singleton *singleton )
         {
-            singletons_[type.name()].
-                reset( singleton );
+            singletons_[type.name()].reset( singleton );
         }
 
         Singleton *instance( const std::type_info &type )
