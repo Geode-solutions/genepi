@@ -2,7 +2,7 @@
 <h3 align="center">Automatic generation of N-API wrapper from a C++ library</h3>
 
 <p align="center">
-  <img src="https://dev.azure.com/GeodeSolutions/Geode/_apis/build/status/Geode-solutions.genepi?branchName=master" alt="Build Status">
+  <img src="https://github.com/Geode-solutions/genepi/workflows/Node%20CI/badge.svg" alt="Build Status">
   <img src="https://img.shields.io/github/release/Geode-solutions/genepi.svg" alt="Version">
 </p>
 
