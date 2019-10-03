@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-18.04
     
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - uses: Geode-solutions/actions/clang-format@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TOKEN }}
       
   build:
     runs-on: ${{ matrix.os }}
