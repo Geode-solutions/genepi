@@ -1,0 +1,46 @@
+name: CI
+
+on: 
+  push:
+  pull_request:
+
+jobs:
+  format:
+    runs-on: ubuntu-18.04
+    
+    steps:
+      - uses: actions/checkout@v1
+      - uses: Geode-solutions/actions/clang-format@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      
+  build:
+    runs-on: ${{ matrix.os }}
+    needs: format
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+        os: [ubuntu-18.04, windows-2016, macOS-10.14]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install and build
+      run: |
+        npm install
+        npm run examples
+        
+  semantic-release:
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+    - uses: actions/checkout@v1
+    - run: npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    

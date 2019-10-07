@@ -40,7 +40,7 @@ namespace foo
     {
         std::cout << "Hello, " << name << std::endl;
     }
-}
+} // namespace foo
 
 #include <genepi/genepi.h>
 
@@ -48,7 +48,7 @@ namespace
 {
     GENEPI_FUNCTION( sayHello );
     NAMED_GENEPI_FUNCTION( sayBye, sayGoodbye );
-}
+} // namespace
 
 namespace foo
 {

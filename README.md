@@ -2,14 +2,14 @@
 <h3 align="center">Automatic generation of N-API wrapper from a C++ library</h3>
 
 <p align="center">
-  <img src="https://dev.azure.com/GeodeSolutions/Geode/_apis/build/status/Geode-solutions.genepi?branchName=master" alt="Build Status">
+  <img src="https://github.com/Geode-solutions/genepi/workflows/CI/badge.svg" alt="Build Status">
   <img src="https://img.shields.io/github/release/Geode-solutions/genepi.svg" alt="Version">
 </p>
 
 <p align="center">
-  <img src="https://dev.azure.com/GeodeSolutions/Geode/_apis/build/status/Geode-solutions.genepi?branchName=master&jobName=Test&configuration=Test%20Windows&label=Windows" alt="Windows Build Status">
-  <img src="https://dev.azure.com/GeodeSolutions/Geode/_apis/build/status/Geode-solutions.genepi?branchName=master&jobName=Test&configuration=Test%20Ubuntu&label=Linux" alt="Linux Build Status">
-  <img src="https://dev.azure.com/GeodeSolutions/Geode/_apis/build/status/Geode-solutions.genepi?branchName=master&jobName=Test&configuration=Test%20Mac&label=macOS" alt="Apple Build Status">
+  <img src="https://img.shields.io/static/v1?label=Windows&logo=windows&logoColor=white&message=support&color=success" alt="Windows support">
+  <img src="https://img.shields.io/static/v1?label=Linux&logo=linux&logoColor=white&message=support&color=success" alt="Linux support">
+  <img src="https://img.shields.io/static/v1?label=macOS&logo=apple&logoColor=white&message=support&color=success" alt="macOS support">
 </p>
 
 <p align="center">
