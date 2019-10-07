@@ -24,6 +24,7 @@
 #include <genepi/singleton.h>
 
 #include <map>
+#include <string>
 
 namespace genepi
 {
