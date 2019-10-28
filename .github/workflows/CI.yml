@@ -43,4 +43,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    
+    - name: Notify slack
+      if: failure() && github.ref == 'refs/heads/master'
+      uses: 8398a7/action-slack@v2
+      with:
+        status: failure
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
