@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Geode-solutions
+ * Copyright (c) 2019 - 2020 Geode-solutions
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,4 +26,4 @@ var methods = require('bindings')('genepi-methods');
 var example = new methods.MethodExample();
 example.add(12, 24);
 
-methods.MethodExample.static_add(12,24);
+methods.MethodExample.static_add(12, 24);
