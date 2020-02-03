@@ -25,7 +25,7 @@
 
 #include <napi.h>
 
-#include <genepi/signature/base_signature.h>
+#include <genepi/callable.h>
 
 namespace genepi
 {

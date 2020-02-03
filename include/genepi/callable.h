@@ -23,34 +23,10 @@
 
 #pragma once
 
-#include <genepi/callable.h>
 #include <genepi/common.h>
 
 namespace genepi
 {
-    // Base class for signatures of all constructors, functions and methods.
-    // A signature represents a unique set of argument and return types,
-    // and the invoker functions needed to deal with such types.
-    class BaseSignature
-    {
-    public:
-        BaseSignature( Callable caller, unsigned int arity )
-            : caller_( caller ), arity_( arity )
-        {
-        }
-
-        Callable caller() const
-        {
-            return caller_;
-        }
-
-        unsigned int arity() const
-        {
-            return arity_;
-        }
-
-    private:
-        const Callable caller_;
-        const unsigned int arity_;
-    };
+    using Callable =
+        std::add_pointer< Napi::Value( const Napi::CallbackInfo& ) >::type;
 } // namespace genepi

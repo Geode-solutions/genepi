@@ -38,6 +38,7 @@ target_sources(genepi
         "${genepi_include_dir}/bind_class_base.h"
         "${genepi_include_dir}/binding_std.h"
         "${genepi_include_dir}/binding_type.h"
+        "${genepi_include_dir}/callable.h"
         "${genepi_include_dir}/caller.h"
         "${genepi_include_dir}/checker.h"
         "${genepi_include_dir}/class_definer.h"
