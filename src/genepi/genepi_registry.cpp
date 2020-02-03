@@ -21,7 +21,30 @@
  *
  */
 
-#pragma once
+#include <genepi/genepi_registry.h>
 
-#include <genepi/genepi_export.h>
-#include <napi.h>
+namespace genepi
+{
+    std::vector< FunctionDefinition >& function_list()
+    {
+        static std::vector< FunctionDefinition > functionList;
+        return functionList;
+    }
+
+    std::vector< BindClassBase* >& class_list()
+    {
+        static std::vector< BindClassBase* > classList;
+        return classList;
+    }
+
+    void register_function(
+        std::string name, unsigned int number, BaseSignature* signature )
+    {
+        function_list().emplace_back( std::move( name ), number, signature );
+    }
+
+    void register_class( BindClassBase& bindClass )
+    {
+        class_list().emplace_back( &bindClass );
+    }
+} // namespace genepi

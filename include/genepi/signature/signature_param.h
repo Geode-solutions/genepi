@@ -25,7 +25,7 @@
 
 #include <napi.h>
 
-#include <genepi/callable.h>
+#include <genepi/types.h>
 
 namespace genepi
 {

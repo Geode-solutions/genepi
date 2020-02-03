@@ -26,13 +26,13 @@
 #include <algorithm>
 #include <memory>
 
+#include <genepi/bind_class.h>
 #include <genepi/class_wrapper.h>
+#include <genepi/genepi_registry.h>
+#include <genepi/types.h>
 
 namespace genepi
 {
-    template < typename ArgType >
-    struct BindingType;
-
     // Generic C++ object.
     template < typename ArgType >
     struct BindingType

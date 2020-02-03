@@ -23,15 +23,9 @@
 
 #pragma once
 
-#include <genepi/common.h>
 #include <genepi/method_definition.h>
 #include <genepi/signature/base_signature.h>
 #include <genepi/signature/signature_param.h>
-
-namespace genepi
-{
-    class BaseSignature;
-} // namespace genepi
 
 namespace genepi
 {

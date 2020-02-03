@@ -23,8 +23,8 @@
 
 #pragma once
 
-#include <genepi/callable.h>
 #include <genepi/common.h>
+#include <genepi/types.h>
 
 namespace genepi
 {

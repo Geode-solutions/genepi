@@ -28,7 +28,7 @@ include("${UTILS_FILE}")
 
 set(genepi_include_dir "${PROJECT_SOURCE_DIR}/include/genepi")
 set(genepi_source_dir "${PROJECT_SOURCE_DIR}/src/genepi")
-add_library(genepi "${genepi_source_dir}/common.cpp")
+add_library(genepi "${genepi_source_dir}/genepi_registry.cpp")
 add_library(genepi::genepi ALIAS genepi)
 set_target_properties(genepi PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_sources(genepi
@@ -38,7 +38,6 @@ target_sources(genepi
         "${genepi_include_dir}/bind_class_base.h"
         "${genepi_include_dir}/binding_std.h"
         "${genepi_include_dir}/binding_type.h"
-        "${genepi_include_dir}/callable.h"
         "${genepi_include_dir}/caller.h"
         "${genepi_include_dir}/checker.h"
         "${genepi_include_dir}/class_definer.h"
@@ -48,6 +47,7 @@ target_sources(genepi
         "${genepi_include_dir}/function_definer.h"
         "${genepi_include_dir}/function_definition.h"
         "${genepi_include_dir}/genepi.h"
+        "${genepi_include_dir}/genepi_registry.h"
         "${genepi_include_dir}/method_definition.h"
         "${genepi_include_dir}/signature/base_signature.h"
         "${genepi_include_dir}/signature/constructor_signature.h"
@@ -56,6 +56,7 @@ target_sources(genepi
         "${genepi_include_dir}/signature/signature_param.h"
         "${genepi_include_dir}/signature/templated_base_signature.h"
         "${genepi_include_dir}/singleton.h"
+        "${genepi_include_dir}/types.h"
         "${genepi_include_dir}/type_list.h"
         "${genepi_include_dir}/type_transformer.h"
         "${genepi_source_dir}/singleton.cpp"

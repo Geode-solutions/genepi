@@ -30,9 +30,6 @@
 namespace genepi
 {
     template < typename ArgType >
-    struct BindingType;
-
-    template < typename ArgType >
     struct TypeTransformer
     {
         using Binding = BindingType< ArgType >;

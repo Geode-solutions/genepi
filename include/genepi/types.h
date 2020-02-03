@@ -23,5 +23,13 @@
 
 #pragma once
 
-#include <genepi/genepi_export.h>
 #include <napi.h>
+
+namespace genepi
+{
+    using Callable =
+        std::add_pointer< Napi::Value( const Napi::CallbackInfo& ) >::type;
+
+    template < typename ArgType >
+    struct BindingType;
+} // namespace genepi

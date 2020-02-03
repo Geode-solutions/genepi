@@ -23,5 +23,22 @@
 
 #pragma once
 
-#include <genepi/genepi_export.h>
-#include <napi.h>
+#include <vector>
+
+#include <genepi/common.h>
+#include <genepi/function_definition.h>
+
+namespace genepi
+{
+    class BindClassBase;
+
+    std::vector< FunctionDefinition > genepi_api& function_list();
+
+    std::vector< BindClassBase* > genepi_api& class_list();
+
+    void genepi_api register_function(
+        std::string name, unsigned int number, BaseSignature* signature );
+
+    void genepi_api register_class( BindClassBase& bindClass );
+
+} // namespace genepi
