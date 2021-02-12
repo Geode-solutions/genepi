@@ -45,6 +45,16 @@
         "string_view": "cpp",
         "system_error": "cpp",
         "typeinfo": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "cstddef": "cpp",
+        "atomic": "cpp",
+        "iterator": "cpp",
+        "map": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "string": "cpp",
+        "cinttypes": "cpp",
+        "bit": "cpp"
     },
 }

@@ -80,6 +80,27 @@ namespace genepi
         }
     };
 
+    template < typename ArgType, size_t size >
+    struct BindingType< const std::array< ArgType, size > & >
+    {
+        using Type = std::array< ArgType, size >;
+
+        static bool checkType( Napi::Value arg )
+        {
+            return arg.IsArray();
+        }
+
+        static Type fromNapiValue( Napi::Value arg )
+        {
+            return BindingType< Type >::fromNapiValue( arg );
+        }
+
+        static Napi::Value toNapiValue( Napi::Env env, Type &&arg )
+        {
+            return BindingType< Type >::toNapiValue( env, arg );
+        }
+    };
+
     // Vector.
     template < typename ArgType >
     struct BindingType< std::vector< ArgType > >
@@ -131,22 +152,21 @@ namespace genepi
     template < typename ArgType >
     struct BindingType< const std::vector< ArgType > & >
     {
-        using Type = const std::vector< ArgType > &;
-        using BaseType = std::vector< ArgType >;
+        using Type = std::vector< ArgType >;
 
         static bool checkType( Napi::Value arg )
         {
             return arg.IsArray();
         }
 
-        static BaseType fromNapiValue( Napi::Value arg )
+        static Type fromNapiValue( Napi::Value arg )
         {
-            return BindingType< BaseType >::fromNapiValue( arg );
+            return BindingType< Type >::fromNapiValue( arg );
         }
 
         static Napi::Value toNapiValue( Napi::Env env, Type &&arg )
         {
-            return BindingType< BaseType >::toNapiValue( env, arg );
+            return BindingType< Type >::toNapiValue( env, arg );
         }
     };
 
