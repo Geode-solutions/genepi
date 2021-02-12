@@ -128,6 +128,28 @@ namespace genepi
         }
     };
 
+    template < typename ArgType >
+    struct BindingType< const std::vector< ArgType > & >
+    {
+        using Type = const std::vector< ArgType > &;
+        using BaseType = std::vector< ArgType >;
+
+        static bool checkType( Napi::Value arg )
+        {
+            return arg.IsArray();
+        }
+
+        static BaseType fromNapiValue( Napi::Value arg )
+        {
+            return BindingType< BaseType >::fromNapiValue( arg );
+        }
+
+        static Napi::Value toNapiValue( Napi::Env env, Type &&arg )
+        {
+            return BindingType< BaseType >::toNapiValue( env, arg );
+        }
+    };
+
     // String.
     template <>
     struct BindingType< std::string >

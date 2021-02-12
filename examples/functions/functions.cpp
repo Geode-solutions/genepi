@@ -23,6 +23,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 void sayHello( const std::string& name )
 {
@@ -32,6 +33,24 @@ void sayHello( const std::string& name )
 void sayBye( const std::string& name )
 {
     std::cout << "Bye, " << name << std::endl;
+}
+
+void displayArray( std::vector< double > values )
+{
+    for( const auto i : values )
+    {
+        std::cout << i << ' ';
+    }
+    std::cout << std::endl;
+}
+
+void displayArray2( const std::vector< double >& values )
+{
+    for( const auto i : values )
+    {
+        std::cout << i << ' ';
+    }
+    std::cout << std::endl;
 }
 
 namespace foo
@@ -48,6 +67,8 @@ namespace
 {
     GENEPI_FUNCTION( sayHello );
     NAMED_GENEPI_FUNCTION( sayBye, sayGoodbye );
+    GENEPI_FUNCTION( displayArray );
+    GENEPI_FUNCTION( displayArray2 );
 } // namespace
 
 namespace foo
