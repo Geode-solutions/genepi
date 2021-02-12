@@ -23,6 +23,8 @@
 
 #pragma once
 
+#include <napi.h>
+
 #include <genepi/method_definition.h>
 #include <genepi/signature/signature_param.h>
 #include <genepi/singleton.h>
