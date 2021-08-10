@@ -397,7 +397,7 @@ methods.MethodExample.static_add(12,24); // Output: Sum = 36
 
 ```
 ### Overloaded methods
-The `GENEPI_METHOD()` macro, like `GENEPI_FUNCITON` macro, cannot distinguish between several
+The `GENEPI_METHOD()` macro, like `GENEPI_FUNCTION` macro, cannot distinguish between several
 overloaded versions of the same method.
 In this case the `GENEPI_MULTIMETHOD()` macro must be used.
 
