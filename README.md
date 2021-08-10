@@ -283,7 +283,7 @@ as if it was a function definition.
 
 The class can be renamed on the JavaScript side by using the `NAMED_GENEPI_CLASS` macro and passing a string as a
 second argument. This is especially useful for binding a template class
-specialization with a more reasonable name: `NAMED_GENEPI_CLASS(Data<int>, "IntData")`.
+specialization with a more reasonable name: `NAMED_GENEPI_CLASS(Data<int>, IntData)`.
 
 Constructors are exported with a macro call `GENEPI_CONSTRUCTOR(types...);` where `types` is a comma-separated list of arguments to the constructor, such as `int, int`. Calling `GENEPI_CONSTRUCTOR` multiple times allows overloading it, but **each overload must have a different number of arguments**.
 
