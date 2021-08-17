@@ -25,4 +25,5 @@ var classes = require('bindings')('genepi-classes');
 
 var a = new classes.ClassExample();
 var b = new classes.ClassExample(42, 54);
-var c = new classes.ClassExample("Don't panic");
+var c = new classes.ClassExample(42);
+var d = new classes.ClassExample("Don't panic");

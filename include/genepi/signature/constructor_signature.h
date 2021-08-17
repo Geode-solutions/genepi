@@ -42,9 +42,16 @@ namespace genepi
         using ConstructWrapper = Creator< Bound,
             typename MapWithIndex< TypeList, ArgFromNapiValue, Args... >::
                 type >;
+        using Parent =
+            TemplatedBaseSignature< ConstructorSignature, Bound *, Args... >;
 
         static Napi::Value call( const Napi::CallbackInfo &args )
         {
+            if( !Parent::CheckWrapper::are_types_valid( args ) )
+            {
+                throw Napi::Error::New(
+                    args.Env(), Parent::CheckWrapper::getTypeError( args ) );
+            }
             ConstructWrapper::create( args );
             return args.Env().Undefined();
         }
