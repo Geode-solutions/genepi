@@ -37,6 +37,11 @@ public:
         std::cout << "Ints: " << a << " " << b << std::endl;
     }
 
+    ClassExample( int a )
+    {
+        std::cout << "Int: " << a << std::endl;
+    }
+
     ClassExample( const std::string& msg )
     {
         std::cout << "String: " << msg << std::endl;
@@ -50,6 +55,7 @@ GENEPI_CLASS( ClassExample )
     GENEPI_CONSTRUCTOR();
     GENEPI_CONSTRUCTOR( int, int );
     GENEPI_CONSTRUCTOR( const std::string& );
+    GENEPI_CONSTRUCTOR( int );
 }
 
 GENEPI_MODULE( classes );

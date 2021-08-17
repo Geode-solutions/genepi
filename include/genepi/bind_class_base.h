@@ -57,7 +57,8 @@ namespace genepi
     public:
         void add_constructor( BaseSignature* signature )
         {
-            constructors_[signature->arity()] = signature->caller();
+            constructors_[signature->arity()].emplace_back(
+                signature->caller() );
         }
 
         void add_static_method(
@@ -123,7 +124,7 @@ namespace genepi
     protected:
         bool is_initialized_{ false };
         std::string name_;
-        std::map< unsigned int, Callable > constructors_;
+        std::map< unsigned int, std::vector< Callable > > constructors_;
         std::deque< MethodDefinition > static_methods_;
         std::deque< MethodDefinition > methods_;
         std::deque< SuperClassSpec > super_classes_;

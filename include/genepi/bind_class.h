@@ -71,8 +71,20 @@ namespace genepi
         {
             try
             {
-                constructors_.at(
-                    static_cast< unsigned int >( info.Length() ) )( info );
+                for( const auto& constructor : constructors_.at(
+                         static_cast< unsigned int >( info.Length() ) ) )
+                {
+                    try
+                    {
+                        constructor( info );
+                        return;
+                    }
+                    catch( const Napi::Error& /*unsued*/ )
+                    {
+                        continue;
+                    }
+                }
+                throw Napi::Error::New( info.Env(), "Wrong argument types" );
             }
             catch( const std::out_of_range& )
             {
