@@ -79,7 +79,7 @@ namespace genepi
                         constructor( info );
                         return;
                     }
-                    catch( const Napi::Error& e )
+                    catch( const Napi::Error& /*unsued*/ )
                     {
                         continue;
                     }

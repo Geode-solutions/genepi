@@ -218,9 +218,9 @@ Example from JavaScript: **[`functions.js`](https://github.com/Geode-solutions/g
 ```JavaScript
 var functions = require('genepi-functions.node');
 
-fucntions.sayHello('you'); // Output: Hello, you
-fucntions.sayGoodbye('you'); // Output: Bye, you
-fucntions.sayNamespacedHello('you'); // Output: Hello, you
+functions.sayHello('you'); // Output: Hello, you
+functions.sayGoodbye('you'); // Output: Bye, you
+functions.sayNamespacedHello('you'); // Output: Hello, you
 ```
 
 ### Overloaded functions
