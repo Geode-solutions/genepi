@@ -54,11 +54,6 @@ namespace genepi
 
         void initialize( Napi::Env& env, Napi::Object& target ) final
         {
-            if( is_initialized_ )
-            {
-                return;
-            }
-            is_initialized_ = true;
             std::deque< MethodDefinition > methods;
             std::unordered_set< const BindClassBase* > classes;
             initialize_api( methods, classes );

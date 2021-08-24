@@ -169,6 +169,7 @@ var example = require('bindings')('my-genepi-addon');
 Functions not belonging to any class can be exported inside a named or an anonymous namespace.
 The C++ function gets exported to JavaScript with the same name using `GENEPI_FUNCTION`,
 or it can be renamed by adding a second argument (without quotation marks) using `NAMED_GENEPI_FUNCTION`.
+Addind double underscore in the new name will result in adding the function in nested objects on the js side.
 
 If the C++ function is overloaded, `GENEPI_MULTIFUNCTION` macro must be used
 instead. See [overloaded functions](#overloaded-functions).
@@ -189,6 +190,11 @@ void sayBye( const std::string& name )
     std::cout << "Bye, " << name << std::endl;
 }
 
+void sayByeAgain( const std::string& name )
+{
+    std::cout << "Bye again, " << name << std::endl;
+}
+
 namespace foo
 {
     void sayNamespacedHello( const std::string& name )
@@ -203,6 +209,7 @@ namespace
 {
     GENEPI_FUNCTION( sayHello );
     NAMED_GENEPI_FUNCTION( sayBye, sayGoodbye );
+    NAMED_GENEPI_FUNCTION( sayByeAgain, say__Goodbye );
 }
 
 namespace foo
@@ -220,6 +227,7 @@ var functions = require('genepi-functions.node');
 
 functions.sayHello('you'); // Output: Hello, you
 functions.sayGoodbye('you'); // Output: Bye, you
+functions.say.Goodbye('you'); // Output: Bye again, you
 functions.sayNamespacedHello('you'); // Output: Hello, you
 ```
 

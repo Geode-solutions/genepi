@@ -122,7 +122,6 @@ namespace genepi
         }
 
     protected:
-        bool is_initialized_{ false };
         std::string name_;
         std::map< unsigned int, std::vector< Callable > > constructors_;
         std::deque< MethodDefinition > static_methods_;

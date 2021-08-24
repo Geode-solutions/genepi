@@ -41,22 +41,63 @@ namespace genepi
 
         void initialize( Napi::Env& env, Napi::Object& exports )
         {
-            if( is_initialized_ )
-            {
-                return;
-            }
-            is_initialized_ = true;
             auto param = new genepi::SignatureParam;
             param->method_number = number();
-            exports.Set( Napi::String::New( env, name() ),
+            export_path( name(),
                 Napi::Function::New( env, signature()->caller(), "",
                     static_cast< void* >(
                         Napi::External< genepi::SignatureParam >::New(
                             env, param )
-                            .Data() ) ) );
+                            .Data() ) ),
+                exports );
         }
 
     private:
-        bool is_initialized_{ false };
+        void export_path(
+            const std::string& path, Napi::Value value, Napi::Object obj )
+        {
+            auto last_object = obj;
+            const auto tokens = split( path );
+            for( auto i = 0; i != tokens.size() - 1; i++ )
+            {
+                const auto& property = tokens[i];
+                Napi::Value prop_value = last_object.Get( property );
+                if( prop_value.IsObject() )
+                {
+                    last_object = prop_value.As< Napi::Object >();
+                }
+                else if( prop_value.IsUndefined() )
+                {
+                    auto new_object = Napi::Object::New( obj.Env() );
+                    last_object.DefineProperty( Napi::PropertyDescriptor::Value(
+                        property, new_object, napi_default_jsproperty ) );
+                    last_object = new_object;
+                }
+                else
+                {
+                    throw Napi::Error::New(
+                        obj.Env(), "Attempted to set property \"" + property
+                                       + "\" on a non-object" );
+                }
+            }
+            last_object.DefineProperty( Napi::PropertyDescriptor::Value(
+                tokens.back(), value, napi_default_jsproperty ) );
+        }
+
+        std::vector< std::string > split( const std::string& s )
+        {
+            std::vector< std::string > output;
+            std::string::size_type prev_pos = 0, pos = 0;
+            while( ( pos = s.find( "__", pos ) ) != std::string::npos )
+            {
+                std::string substring( s.substr( prev_pos, pos - prev_pos ) );
+                output.push_back( substring );
+                pos += 2;
+                prev_pos = pos;
+            }
+            output.push_back(
+                s.substr( prev_pos, pos - prev_pos ) ); // Last word
+            return output;
+        }
     };
 } // namespace genepi
