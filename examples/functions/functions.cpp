@@ -35,6 +35,11 @@ void sayBye( const std::string& name )
     std::cout << "Bye, " << name << std::endl;
 }
 
+void sayBye2( const std::string& name )
+{
+    std::cout << "Bye2, " << name << std::endl;
+}
+
 void displayArray( std::vector< double > values )
 {
     for( const auto i : values )
@@ -67,6 +72,7 @@ namespace
 {
     GENEPI_FUNCTION( sayHello );
     NAMED_GENEPI_FUNCTION( sayBye, sayGoodbye );
+    NAMED_GENEPI_FUNCTION( sayBye2, say__Goodbye );
     GENEPI_FUNCTION( displayArray );
     GENEPI_FUNCTION( displayArray2 );
 } // namespace

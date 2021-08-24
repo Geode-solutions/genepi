@@ -25,6 +25,7 @@ var functions = require('bindings')('genepi-functions');
 
 functions.sayHello('you');
 functions.sayGoodbye('you');
+functions.say.Goodbye('you');
 functions.sayNamespacedHello('you');
 
 const array = [1, 2, 3]
